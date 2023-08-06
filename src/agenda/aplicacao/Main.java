@@ -12,8 +12,8 @@ public class Main {
 
 		// CREATE
 		Contato contato = new Contato();
-		contato.setNome("ana");
-		contato.setIdade(25);
+		contato.setNome("maria");
+		contato.setIdade(30);
 		contato.setDataCadastro(new Date());
 
 		// contatoDao.save(contato);

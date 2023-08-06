@@ -5,20 +5,23 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 
 public class ConnectionFactory {
-	// Nome do usuário do banco de dados
-	private static final String USERNAME = "root";
-	// Senha do banco de dados
-	private static final String PASSWORD = "password";
-	// Caminho do banco, porta e nome do banco
-	private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/agenda";
+
+	// private static final String USERNAME = "root";
+	// private static final String PASSWORD = "password";
+	// private static final String DATABASE_URL =
+	// "jdbc:mysql://localhost:3306/agenda";
+	private static final String USERNAME = "postgres";
+	private static final String PASSWORD = "postgres";
+	private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/agenda";
 
 	public static Connection createConnectionToMySQL() {
-		try {
-			// Carrega o driver JDBC do banco de dados
-			Class.forName("com.mysql.cj.jdbc.Driver");
-		} catch (ClassNotFoundException e) {
-			e.printStackTrace();
-		}
+		// try {
+		// // Carrega o driver JDBC do banco de dados
+		// // Class.forName("com.mysql.cj.jdbc.Driver");
+		// Class.forName("org.postgresql.Driver");
+		// } catch (ClassNotFoundException e) {
+		// e.printStackTrace();
+		// }
 
 		Connection connection = null;
 		try {
