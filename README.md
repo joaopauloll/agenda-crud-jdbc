@@ -1,3 +1,3 @@
 ## Agenda
 
-CRUD utilizando JDBC e MySQL.
+CRUD utilizando JDBC com MySQL e PostgreSQL.
