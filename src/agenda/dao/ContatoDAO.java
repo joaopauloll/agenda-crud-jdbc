@@ -24,7 +24,6 @@ public class ContatoDAO {
         try {
             // Criar uma conexão com o banco de dados
             connection = ConnectionFactory.createConnectionToMySQL();
-
             // Criar uma PreparedStatement, para executar uma query
             pstm = connection.prepareStatement(sql);
 
@@ -48,10 +47,8 @@ public class ContatoDAO {
 
         try {
             connection = ConnectionFactory.createConnectionToMySQL();
-
             pstm = connection.prepareStatement(sql);
 
-            // Adicionar os valores esperados pela query
             pstm.setString(1, contato.getNome());
             pstm.setInt(2, contato.getIdade());
             pstm.setDate(3, new Date(contato.getDataCadastro().getTime()));
@@ -73,7 +70,6 @@ public class ContatoDAO {
 
         try {
             connection = ConnectionFactory.createConnectionToMySQL();
-
             pstm = connection.prepareStatement(sql);
 
             pstm.setInt(1, id);
@@ -91,14 +87,12 @@ public class ContatoDAO {
     public List<Contato> getContatos() {
         String sql = "SELECT * FROM contatos";
 
-        List<Contato> contatos = new ArrayList<Contato>();
+        List<Contato> contatos = new ArrayList<>();
 
         try {
             connection = ConnectionFactory.createConnectionToMySQL();
-
             pstm = connection.prepareStatement(sql);
-
-            rset = pstm.executeQuery();
+            rset = pstm.executeQuery(); // ou .execute()
 
             while (rset.next()) {
                 Contato contato = new Contato();
@@ -117,6 +111,34 @@ public class ContatoDAO {
         }
 
         return contatos;
+    }
+
+    public Contato getContatoById(int id) {
+        String sql = "SELECT * FROM contatos WHERE id = ?";
+
+        Contato contato = new Contato();
+
+        try {
+            connection = ConnectionFactory.createConnectionToMySQL();
+            pstm = connection.prepareStatement(sql);
+
+            pstm.setInt(1, id);
+
+            rset = pstm.executeQuery(); // ou .execute()
+            rset.next();
+
+            contato.setId(rset.getInt("id"));
+            contato.setNome(rset.getString("nome"));
+            contato.setIdade(rset.getInt("idade"));
+            contato.setDataCadastro(rset.getDate("dataCadastro"));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            close();
+        }
+
+        return contato;
     }
 
     private void close() {

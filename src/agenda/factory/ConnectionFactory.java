@@ -15,13 +15,6 @@ public class ConnectionFactory {
 	private static final String DATABASE_URL = "jdbc:postgresql://localhost:5432/agenda";
 
 	public static Connection createConnectionToMySQL() {
-		// try {
-		// // Carrega o driver JDBC do banco de dados
-		// // Class.forName("com.mysql.cj.jdbc.Driver");
-		// Class.forName("org.postgresql.Driver");
-		// } catch (ClassNotFoundException e) {
-		// e.printStackTrace();
-		// }
 
 		Connection connection = null;
 		try {

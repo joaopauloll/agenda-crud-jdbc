@@ -32,8 +32,15 @@ public class Main {
 
 		// READ
 		for (Contato c : contatoDao.getContatos()) {
-			System.out.println(c.getNome() + "\t" + c.getIdade() + "\t" + c.getDataCadastro() + "\t" + c.getId());
+			System.out.println(c.getNome() + "\t" + c.getIdade() + "\t" +
+					c.getDataCadastro() + "\t" + c.getId());
 		}
+
+		// GET BY ID
+		Contato c = contatoDao.getContatoById(2);
+		System.out
+				.println("\nBY ID: " + c.getNome() + "\t" + c.getIdade() + "\t" + c.getDataCadastro() + "\t"
+						+ c.getId());
 
 	}
 
