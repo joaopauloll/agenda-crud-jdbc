@@ -1,8 +1,17 @@
-create database agenda;
+CREATE DATABASE agenda;
 
-create table contatos(
-id int not null auto_increment primary key,
-nome varchar(40),
-idade int,
-dataCadastro date
+-- mysql
+CREATE TABLE contatos(
+id INT AUTO_INCREMENT PRIMARY KEY,
+nome VARCHAR(40),
+idade INT,
+dataCadastro DATE
 )
+
+-- postgres
+CREATE TABLE contatos (
+    id SERIAL PRIMARY KEY,
+    nome VARCHAR(40),
+    idade INT,
+    dataCadastro DATE
+);
